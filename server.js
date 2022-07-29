@@ -2,7 +2,7 @@ import db from "./db/connection.js";
 import routes from "./routes/index.js";
 
 import express from "express";
-import cors form "cors";
+import cors from "cors";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
