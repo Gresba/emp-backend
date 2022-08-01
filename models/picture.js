@@ -8,7 +8,7 @@ let Picture = new Schema({
     "ImageId": { type: String },
     "Year": { type: Number } ,
     "Tags": [{ type: String }],
-    "Comments": [{ type: Schema.Types.ObjectId, ref: "comments" }]
+    "Comments": [{ type: Schema.Types.ObjectId, ref: "Comments" }]
 })
 
 export default mongoose.model("pictures", Picture)
