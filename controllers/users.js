@@ -57,7 +57,7 @@ export const getUserByEmail = async (req, res) => {
   }
 }
 
-export const createUser = async (req, res) => {
+export const register = async (req, res) => {
   try {
     
     // Grab the user data passed in from the body of the request
