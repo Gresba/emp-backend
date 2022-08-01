@@ -28,10 +28,10 @@ Endpoint: https://api.artic.edu/api/v1/artworks
 
 ```javascript
   {
-    email : String,
-    fullName: String,
-    userName: String,
-    hashedPassword: String
+    Email : String,
+    Full_Name: String,
+    Username: String,
+    Password: String
   }
 ```
 
@@ -39,12 +39,12 @@ Endpoint: https://api.artic.edu/api/v1/artworks
 
 ```javascript
   {
-    artist: String,
-    title: String,
-    imageId: String,
-    year: Number,
-    tags: [String],
-    comments: [comments]
+    Artist: String,
+    Title: String,
+    ImageId: String,
+    Year: Number,
+    Tags: [String],
+    Comments: [comments]
   },
 
     { timestamp: true }
@@ -54,8 +54,8 @@ Endpoint: https://api.artic.edu/api/v1/artworks
 
 ```javascript
   {
-    owner: {userObject}
-    text: String
+    Owner: { userObject },
+    Text: String
   },
 
     { timestamp: true }
