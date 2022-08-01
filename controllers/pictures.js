@@ -17,7 +17,7 @@ export const getPicture = async (req, res) => {
 
     const id = params.id;
 
-    const picture = await Picture.findById(id);
+    const picture = await Picture.findById(id).populate("Comments");
 
     res.status(200).json(picture);
   } catch (err) {
