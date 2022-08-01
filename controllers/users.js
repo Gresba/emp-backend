@@ -69,7 +69,7 @@ export const createUser = async (req, res) => {
     }
 
     // Check if the user exist
-    const doesExist = await UserModel.findOne({ email: email });
+    const doesExist = await User.findOne({ email: Email });
     if(doesExist) {
         return res.status(400).json({ error: "User already exist"});
     }
@@ -80,7 +80,7 @@ export const createUser = async (req, res) => {
 
     const user = await User.create({
         ...req.body,
-        password: hashPassword,
+        Password: hashedPassword,
     });
 
     await user.save();
