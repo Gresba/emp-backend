@@ -39,24 +39,6 @@ export const getUserById = async (req, res) => {
   }
 }
 
-export const getUserByEmail = async (req, res) => {
-  try {
-    const params = req.params;
-
-    const email = params.email;
-
-    const user = await User.find({ email: email });
-
-    if (user)
-      return res.status(200).json(user)
-
-    res.status(400).json({ error: "User not found!" })
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ error: err.message });
-  }
-}
-
 export const register = async (req, res) => {
   try {
     
