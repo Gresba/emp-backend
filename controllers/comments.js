@@ -1,4 +1,5 @@
 import Comment from "../models/comment.js"
+import Picture from "../models/picture.js"
 
 export const getComments = async (req, res) => {
   try {
@@ -30,11 +31,26 @@ export const getComment = async (req, res) => {
 
 export const createComment = async (req, res) => {
   try {
-    const comment = new Comment(req.body)
+    const params = req.params;
 
-    await comment.save();
+    const pictureid = params.pictureid;
 
-    res.status(201).json(comment);
+    const picture = await Picture.findById(pictureid);
+
+    if(picture)
+    {
+        const comment = new Comment(req.body)
+        await comment.save();
+
+        picture.Comments.push(comment);
+
+        await picture.save();
+
+        return res.status(201).json(comment);
+    }
+
+    throw new Error("Blog does not exist!");  
+
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: err.message });

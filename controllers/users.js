@@ -1,4 +1,15 @@
 import User from "../models/user.js"
+import Jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
+
+// Pull token from environment variable or set token if not set
+let secret = process.env.JWT_SECRET || "123";
+
+let generateToken = async (id) => {
+    return await Jwt.sign({ id: id}, secret ({
+        expiresIn: "7d",
+    }));
+};
 
 export const getUsers = async (req, res) => {
   try {
@@ -48,13 +59,29 @@ export const getUserByEmail = async (req, res) => {
 
 export const createUser = async (req, res) => {
   try {
+    
+    // Grab the user data passed in from the body of the request
     const { Email, Full_Name, Username, Password } = req.body;
 
+    // If any of the data is missing, then throw and error
     if (!Email || !Full_Name || !Username || !Password) {
       return res.status(400).json({ message: "Missing required fields" });
     }
 
-    const user = new User(req.body)
+    // Check if the user exist
+    const doesExist = await UserModel.findOne({ email: email });
+    if(doesExist) {
+        return res.status(400).json({ error: "User already exist"});
+    }
+
+    // Hash the password
+    const salt = await bcrypt.genSalt(1);
+    const hashedPassword = await bcrypt.hash(Password, salt);
+
+    const user = await User.create({
+        ...req.body,
+        password: hashPassword,
+    });
 
     await user.save();
 
