@@ -10,13 +10,35 @@ Our goal is to share historical artwork with anyone who may not have access to v
 
 ---
 
-## `API Source & Endpoint:`
+## `API Data Source:`
 
 ---
 
 Source: [The Art Institute of Chicago Public API](https://www.artic.edu/open-access/public-api)
 
-Endpoint: https://api.artic.edu/api/v1/artworks
+Api Root Url: https://api.artic.edu/api/v1/artworks
+
+---
+
+## `API Endpoints:`
+
+---
+
+**API Root Url:** `https://emp-group-project.herokuapp.com/`
+
+### User:
+
+```
+GET /users - Get all the users in the database
+GET /users/:id - Get a user by their id
+POST /users/register - Upload a new user into the database
+POST /users/login - Validate user credentials passed in through the body
+GET /profile - Get a user profile with the Authentication token passed in through the body
+PUT /users/:id - Update information about a user with the API key
+DELETE /users/:id - Delete a user from the database
+```
+
+**Examples**
 
 ---
 
