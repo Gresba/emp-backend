@@ -38,7 +38,20 @@ PUT /users/:id - Update information about a user with the API key
 DELETE /users/:id - Delete a user from the database
 ```
 
-**Examples**
+### Comment:
+```
+GET /comments - Get all comments
+GET /comments/:id - Get a comment by it's id
+POST /comments/:pictureid - Post a comments and associate it with a picture
+PUT /comments/:id - Update a comment by it's id
+DELETE /comments/:id - Delete a comment by it's id
+```
+
+### Pictures:
+```
+GET /pictures - Get all pictures
+GET /pictures/:id - Get a picture by it's id
+```
 
 ---
 
